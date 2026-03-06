@@ -1,0 +1,31 @@
+name: 🚀 Deploy via FTP
+
+on:
+  push:
+    branches:
+      - main   # or 'master', depending on your repo
+
+jobs:
+  deploy:
+    name: Upload files to cPanel via FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📦 Deploy to FTP server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp   # 'ftp' or 'ftps' (secure)
+          port: 21         # usually 21 for FTP, 22 for SFTP
+          local-dir: ./ # adjust to your build folder or project root
+          server-dir: / # adjust to your target folder
+          exclude: |
+            **/.git*
+            **/.github*
+            **/node_modules/*
+            **/vendor/*
