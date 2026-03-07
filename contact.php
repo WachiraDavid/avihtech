@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 
 <!-- Page Header -->
-<section class="pt-32 pb-20 bg-slate-50 text-primary relative border-b border-slate-100">
+<section class="pt-44 pb-20 bg-slate-50 text-primary relative border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span class="text-accent font-bold tracking-widest uppercase text-sm">Connect</span>
         <h1 class="text-4xl md:text-6xl font-display font-bold mt-4">Get in Touch</h1>
@@ -73,7 +73,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-primary mb-1">Our Office</h4>
-                                <p class="text-slate-500 text-sm leading-relaxed">Nairobi, Kenya<br>CBD Office, 4th Floor, Real Estate Plaza</p>
+                                <p class="text-slate-500 text-sm leading-relaxed">Naivasha, Kenya<br>Kinamba</p>
                             </div>
                         </div>
 
@@ -83,7 +83,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-primary mb-1">Phone Numbers</h4>
-                                <p class="text-slate-500 text-sm leading-relaxed">Office: +254 7XX XXX XXX<br>Sales: +254 7YY YYY YYY</p>
+                                <p class="text-slate-500 text-sm leading-relaxed">Office: +254 702 594 345</p>
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-primary mb-1">Email Support</h4>
-                                <p class="text-slate-500 text-sm leading-relaxed">General: info@avihtech.com<br>Support: support@avihtech.com</p>
+                                <p class="text-slate-500 text-sm leading-relaxed">info@avihtechproperties.com</p>
                             </div>
                         </div>
                     </div>

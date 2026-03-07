@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 
 <!-- Page Header -->
-<section class="pt-32 pb-20 bg-slate-100 text-primary relative">
+<section class="pt-44 pb-20 bg-slate-100 text-primary relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span class="text-accent font-bold tracking-widest uppercase text-sm">Portfolio</span>
         <h1 class="text-4xl md:text-6xl font-display font-bold mt-4">Featured Properties</h1>
@@ -12,7 +12,7 @@
 </section>
 
 <!-- Filter & Search Section -->
-<section class="py-12 bg-white border-b border-slate-100 sticky top-20 z-40">
+<section class="py-12 bg-white border-b border-slate-100 sticky top-32 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <form id="filter-form" class="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div class="relative">

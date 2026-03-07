@@ -5,7 +5,7 @@ $post_id = isset($_GET['id']) ? $_GET['id'] : null;
 ?>
 
 <!-- Page Header / Property Banner -->
-<section class="pt-32 pb-20 bg-slate-100 text-primary relative">
+<section class="pt-44 pb-20 bg-slate-100 text-primary relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div class="flex-1">

@@ -5,7 +5,7 @@ $post_id = isset($_GET['id']) ? $_GET['id'] : null;
 ?>
 
 <!-- Page Header -->
-<section class="pt-32 pb-20 bg-primary text-white relative">
+<section class="pt-44 pb-20 bg-primary text-white relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span class="text-accent font-bold tracking-widest uppercase text-sm">Blog Post</span>
         <h1 id="post-title" class="text-4xl md:text-5xl font-display font-bold mt-4 line-pulse h-12 w-3/4 mx-auto bg-slate-700/50 rounded-lg animate-pulse"></h1>

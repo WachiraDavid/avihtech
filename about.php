@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 
 <!-- Page Header -->
-<section class="pt-32 pb-20 bg-primary text-white relative overflow-hidden">
+<section class="pt-44 pb-20 bg-primary text-white relative overflow-hidden">
     <div class="absolute inset-0 z-0 opacity-20">
         <img src="assets/img/hero.png" alt="Background" class="w-full h-full object-cover">
     </div>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="relative">
-                <img src="assets/img/about.png" alt="Our Team" class="rounded-3xl shadow-2xl w-full h-[450px] object-cover">
+                <img src="assets/img/about-avihtech-2.jpg" alt="Our Team" class="rounded-3xl shadow-2xl w-full h-[450px] object-cover">
                 <div class="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10"></div>
             </div>
         </div>

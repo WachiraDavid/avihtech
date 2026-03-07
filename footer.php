@@ -56,15 +56,15 @@
                     <ul class="space-y-4">
                         <li class="flex items-start">
                             <i class="fa-solid fa-location-dot mt-1.5 mr-3 text-accent"></i>
-                            <span class="text-slate-400 text-sm">Nairobi, Kenya<br>CBD Office, 4th Floor</span>
+                            <span class="text-slate-400 text-sm">Naivasha, Kenya<br>Kinamba</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fa-solid fa-phone mr-3 text-accent"></i>
-                            <span class="text-slate-400 text-sm">+254 7XX XXX XXX</span>
+                            <span class="text-slate-400 text-sm">+254 702 594 345</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fa-solid fa-envelope mr-3 text-accent"></i>
-                            <span class="text-slate-400 text-sm">info@avihtech.com</span>
+                            <span class="text-slate-400 text-sm">info@avihtechproperties.com</span>
                         </li>
                     </ul>
                 </div>

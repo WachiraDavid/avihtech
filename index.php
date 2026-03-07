@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 
 <!-- Hero Section -->
-<section class="relative h-screen flex items-center pt-20 overflow-hidden">
+<section class="relative h-screen flex items-center pt-32 overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
         <img src="assets/img/hero.png" alt="Nairobi Skyline" class="w-full h-full object-cover">
@@ -30,11 +30,11 @@
 
             <div class="mt-16 grid grid-cols-3 gap-8 border-t border-white/10 pt-8 hidden md:grid">
                 <div>
-                    <h4 class="text-3xl font-display font-bold text-accent">500+</h4>
+                    <h4 class="text-3xl font-display font-bold text-accent">100+</h4>
                     <p class="text-slate-400 text-sm">Managed Units</p>
                 </div>
                 <div>
-                    <h4 class="text-3xl font-display font-bold text-accent">Ksh 2B+</h4>
+                    <h4 class="text-3xl font-display font-bold text-accent">Ksh 5M+</h4>
                     <p class="text-slate-400 text-sm">Transaction Value</p>
                 </div>
                 <div>
@@ -52,9 +52,9 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="relative">
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
-                <img src="assets/img/about.png" alt="Professional Real Estate" class="rounded-3xl shadow-2xl relative z-10 w-full h-[500px] object-cover">
+                <img src="assets/img/about-avihtech-1.jpg" alt="Professional Real Estate" class="rounded-3xl shadow-2xl relative z-10 w-full h-[500px] object-cover">
                 <div class="absolute -bottom-6 -right-6 bg-primary p-8 rounded-2xl shadow-xl z-20 hidden md:block">
-                    <p class="text-accent text-3xl font-bold mb-1">10+</p>
+                    <p class="text-accent text-3xl font-bold mb-1">6+</p>
                     <p class="text-white text-sm font-medium">Years of Local Expertise</p>
                 </div>
             </div>
