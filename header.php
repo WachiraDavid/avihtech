@@ -99,9 +99,22 @@
             width: 100% !important;
         }
 
-        /* Lightbox Swiper Specifics */
         .lightbox-swiper {
             overflow: hidden !important;
+        }
+
+        /* Skeleton Screens */
+        .skeleton {
+            background: #f1f5f9;
+            background: linear-gradient(110deg, #f1f5f9 8%, #f8fafc 18%, #f1f5f9 33%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position-x: -200%;
+            }
         }
     </style>
 </head>

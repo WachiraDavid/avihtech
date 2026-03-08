@@ -44,10 +44,7 @@
 <section class="py-24 bg-white min-h-[600px]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="property-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- Loading Spinner -->
-            <div class="col-span-full flex justify-center py-20" id="loading-spinner">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-            </div>
+            <!-- Skeletons will be injected here -->
         </div>
 
         <!-- No Results -->
@@ -138,8 +135,31 @@
             }
         ];
 
+        function showSkeletonProperties() {
+            $('#property-list').empty();
+            $('#no-results').addClass('hidden');
+
+            for (let i = 0; i < 6; i++) {
+                const skeleton = `
+                    <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm animate-pulse">
+                        <div class="h-64 skeleton"></div>
+                        <div class="p-8">
+                            <div class="h-6 w-3/4 skeleton rounded-lg mb-4"></div>
+                            <div class="h-4 w-1/2 skeleton rounded-lg mb-6"></div>
+                            <div class="flex gap-2 mb-6">
+                                <div class="h-6 w-16 skeleton rounded-md"></div>
+                                <div class="h-6 w-16 skeleton rounded-md"></div>
+                            </div>
+                            <div class="h-12 w-full skeleton rounded-xl mb-4"></div>
+                            <div class="h-12 w-full border-2 border-slate-100 rounded-xl"></div>
+                        </div>
+                    </div>
+                `;
+                $('#property-list').append(skeleton);
+            }
+        }
+
         function renderProperties(properties) {
-            $('#loading-spinner').hide();
             $('#property-list').empty();
 
             if (properties.length === 0) {
@@ -214,9 +234,8 @@
 
         // Function to fetch data
         function fetchProperties(tagId = '', searchTerm = '', typeSlug = '') {
-            $('#loading-spinner').show();
+            showSkeletonProperties();
             $('#no-results').addClass('hidden');
-            $('#property-list').empty();
 
             // Determine categories to fetch
             // If a specific type slug is provided, and we have its ID, use ONLY that ID

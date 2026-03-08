@@ -15,10 +15,7 @@
 <section class="py-24 bg-white min-h-[600px]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="blog-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <!-- Loading Spinner -->
-            <div class="col-span-full flex justify-center py-20" id="loading-spinner">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-            </div>
+            <!-- Skeletons will be injected here -->
         </div>
 
         <!-- Pagination (Placeholder) -->
@@ -80,8 +77,25 @@
             }
         ];
 
+        function showSkeletonPosts() {
+            $('#blog-list').empty();
+            for (let i = 0; i < 6; i++) {
+                const skeleton = `
+                    <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 animate-pulse">
+                        <div class="h-64 skeleton"></div>
+                        <div class="p-8">
+                            <div class="h-4 w-1/3 skeleton rounded mb-4"></div>
+                            <div class="h-8 w-full skeleton rounded-lg mb-4"></div>
+                            <div class="h-20 w-full skeleton rounded-lg mb-6"></div>
+                            <div class="h-6 w-1/4 skeleton rounded"></div>
+                        </div>
+                    </article>
+                `;
+                $('#blog-list').append(skeleton);
+            }
+        }
+
         function renderPosts(posts) {
-            $('#loading-spinner').hide();
             $('#blog-list').empty();
 
             posts.forEach(post => {
@@ -125,7 +139,7 @@
         }
 
         function fetchPosts() {
-            $('#loading-spinner').show();
+            showSkeletonPosts();
 
             $.ajax({
                 url: WP_API_URL,
