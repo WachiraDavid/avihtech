@@ -281,8 +281,12 @@
                 });
             },
             error: function() {
-                console.error("Failed to fetch featured properties");
-                $('#featured-properties-list').html('<p class="text-slate-400 text-center col-span-full py-10">Unable to load featured properties.</p>');
+                $('#featured-properties-list').html(`
+                    <div class="col-span-full text-center py-12 bg-white/5 rounded-3xl border border-white/10">
+                        <div class="text-4xl text-white/20 mb-4"><i class="fa-solid fa-circle-exclamation"></i></div>
+                        <p class="text-white/60">Featured properties are currently unavailable. Please check back later.</p>
+                    </div>
+                `);
             }
         });
     });

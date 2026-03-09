@@ -12,7 +12,7 @@
 </section>
 
 <!-- Filter & Search Section -->
-<section class="py-12 bg-white border-b border-slate-100 sticky top-32 z-40">
+<section class="py-12 bg-white border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <form id="filter-form" class="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div class="relative">
@@ -93,47 +93,6 @@
                 }
             });
         }
-
-        // Mock Data for demonstration if API fails or is not yet set
-        const mockProperties = [{
-                title: {
-                    rendered: "The Emerald Residency"
-                },
-                id: 1,
-                _embedded: {
-                    "wp:featuredmedia": [{
-                        source_url: "assets/img/property-1.png"
-                    }]
-                },
-                acf: {
-                    location: "Karen, Nairobi",
-                    price: "Ksh 45,000,000",
-                    status: "sale",
-                    type: "residential",
-                    beds: 5,
-                    baths: 4
-                }
-            },
-            {
-                title: {
-                    rendered: "Skyline View Apartments"
-                },
-                id: 2,
-                _embedded: {
-                    "wp:featuredmedia": [{
-                        source_url: "assets/img/property-2.png"
-                    }]
-                },
-                acf: {
-                    location: "Westlands, Nairobi",
-                    price: "Ksh 85,000 /mo",
-                    status: "rent",
-                    type: "residential",
-                    beds: 3,
-                    baths: 2
-                }
-            }
-        ];
 
         function showSkeletonProperties() {
             $('#property-list').empty();
@@ -262,10 +221,13 @@
                     renderProperties(data);
                 },
                 error: function() {
-                    // Fallback to mock data for demonstration
-                    setTimeout(() => {
-                        renderProperties(mockProperties);
-                    }, 800);
+                    $('#property-list').empty().html(`
+                        <div class="col-span-full text-center py-20">
+                            <div class="text-6xl text-slate-200 mb-6"><i class="fa-solid fa-circle-exclamation"></i></div>
+                            <h3 class="text-2xl font-bold text-primary mb-2">Service Unavailable</h3>
+                            <p class="text-slate-500">We could not load our properties right now, please come back later.</p>
+                        </div>
+                    `);
                 }
             });
         }

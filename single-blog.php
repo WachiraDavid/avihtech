@@ -188,9 +188,15 @@ $post_id = isset($_GET['id']) ? $_GET['id'] : null;
                     renderPost(data);
                 },
                 error: function() {
-                    // Fallback or error handling
-                    $('#post-content').html('<p class="text-center text-red-500 font-bold py-20">Post not found or API error.</p>');
-                    $('#post-title').text('Error Loading Content').removeClass('line-pulse animate-pulse');
+                    $('#post-content').html(`
+                        <div class="bg-white p-12 rounded-3xl shadow-sm border border-slate-100 text-center">
+                            <div class="text-5xl text-slate-200 mb-6"><i class="fa-solid fa-file-circle-exclamation"></i></div>
+                            <h3 class="text-2xl font-bold text-primary mb-4">Post Unavailable</h3>
+                            <p class="text-slate-500 mb-8">We could not load this blog post right now. Please check our other insights or try again in a few moments.</p>
+                            <a href="blog.php" class="inline-block bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-slate-800 transition-colors">Back to Blog</a>
+                        </div>
+                    `);
+                    $('#post-title').text('Insight Loading Failed').removeClass('line-pulse animate-pulse');
                 }
             });
         }

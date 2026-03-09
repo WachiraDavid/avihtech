@@ -292,8 +292,16 @@ $post_id = isset($_GET['id']) ? $_GET['id'] : null;
                     renderProperty(data);
                 },
                 error: function() {
-                    $('#property-description').html('<p class="text-center text-red-500 font-bold py-20">Property not found or API error.</p>');
-                    $('#property-title').text('Error Loading Content').removeClass('animate-pulse');
+                    $('#property-description').html(`
+                        <div class="bg-white p-12 rounded-3xl shadow-sm border border-slate-100 text-center">
+                            <div class="text-5xl text-slate-200 mb-6"><i class="fa-solid fa-house-circle-exclamation"></i></div>
+                            <h3 class="text-2xl font-bold text-primary mb-4">Property Unavailable</h3>
+                            <p class="text-slate-500 mb-8">We could not load the details for this property. It may have been moved or is currently undergoing maintenance. Please try again later.</p>
+                            <a href="properties.php" class="inline-block bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-slate-800 transition-colors">Back to Listings</a>
+                        </div>
+                    `);
+                    $('#property-title').text('Detail Loading Failed').removeClass('animate-pulse');
+                    $('#property-price').text('---');
                 }
             });
         }

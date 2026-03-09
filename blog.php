@@ -32,51 +32,6 @@
         const WP_API_URL = '<?php echo WP_API_URL; ?>/posts?categories=4&_embed';
         const WP_API_KEY = '<?php echo WP_API_KEY; ?>';
 
-        // Mock Data for demonstration
-        const mockPosts = [{
-                title: {
-                    rendered: "5 Reasons Why Now is the Best Time to Invest in Kenya"
-                },
-                excerpt: {
-                    rendered: "The real estate market in Nairobi has seen consistent growth over the past decade. Here’s why investors are flocking to..."
-                },
-                date: "2024-03-15",
-                _embedded: {
-                    "wp:featuredmedia": [{
-                        source_url: "assets/img/hero.png"
-                    }]
-                }
-            },
-            {
-                title: {
-                    rendered: "How to Choose the Right Property Management Company"
-                },
-                excerpt: {
-                    rendered: "Managing property can be a daunting task. From tenant screening to rent administration, find out how a professional agency can..."
-                },
-                date: "2024-03-10",
-                _embedded: {
-                    "wp:featuredmedia": [{
-                        source_url: "assets/img/about.png"
-                    }]
-                }
-            },
-            {
-                title: {
-                    rendered: "Exploring the Rise of Gated Communities in Nairobi Suburbs"
-                },
-                excerpt: {
-                    rendered: "Security and community amenities have become top priorities for homeowners. We take a look at the most sought-after..."
-                },
-                date: "2024-03-05",
-                _embedded: {
-                    "wp:featuredmedia": [{
-                        source_url: "assets/img/property-1.png"
-                    }]
-                }
-            }
-        ];
-
         function showSkeletonPosts() {
             $('#blog-list').empty();
             for (let i = 0; i < 6; i++) {
@@ -153,10 +108,13 @@
                     renderPosts(data);
                 },
                 error: function() {
-                    // Fallback to mock data for demonstration
-                    setTimeout(() => {
-                        renderPosts(mockPosts);
-                    }, 800);
+                    $('#blog-list').empty().html(`
+                        <div class="col-span-full text-center py-20">
+                            <div class="text-6xl text-slate-200 mb-6"><i class="fa-solid fa-circle-exclamation"></i></div>
+                            <h3 class="text-2xl font-bold text-primary mb-2">Service Unavailable</h3>
+                            <p class="text-slate-500">We could not load our blog posts right now, please come back later. Feel free to explore other parts of the site.</p>
+                        </div>
+                    `);
                 }
             });
         }
