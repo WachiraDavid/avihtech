@@ -119,7 +119,7 @@
             const subject = sanitizeInput($('#contact-subject').val());
             const message = sanitizeInput($('#contact-message').val());
 
-            const whatsappNumber = '254706636596';
+            const whatsappNumber = '254702594345';
             const encodedMessage = encodeURIComponent(
                 `*New Website Inquiry*\n\n` +
                 `*Subject:* ${subject}\n\n` +
