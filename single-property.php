@@ -316,7 +316,7 @@ $post_id = isset($_GET['id']) ? $_GET['id'] : null;
             const propertyTitle = $('#property-title').text();
             const propertyLink = window.location.href;
 
-            const whatsappNumber = '254706636596';
+            const whatsappNumber = '254702594345';
             const encodedMessage = encodeURIComponent(
                 `*New Property Inquiry*\n\n` +
                 `*Property:* ${propertyTitle}\n` +
