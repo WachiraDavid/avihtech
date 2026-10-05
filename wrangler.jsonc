@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "avihtech",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-05-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Everything else is served straight from ./public without running the Worker.
+    "run_worker_first": ["/api/*", "/images/*", "/properties/*", "/blog/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "avihtech-db",
+      "database_id": "1cb15950-d3f4-444f-b66d-a88cdf72286f",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    { "binding": "IMAGES", "bucket_name": "avihtech-images" }
+  ],
+  "observability": { "enabled": true }
+}

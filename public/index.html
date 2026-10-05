@@ -1,10 +1,27 @@
-<?php include('header.php'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVIHTECH AGENCIES | Premium Real Estate & Property Management</title>
+    <meta name="description" content="AVIHTECH AGENCIES - Professional real estate solutions in Kenya. Property sales, letting, management, and investment advisory.">
+    <link rel="icon" type="image/png" href="/assets/img/avitech-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/site.css">
+    <script src="/js/common.js"></script>
+</head>
+<body class="font-sans text-slate-900 bg-slate-50">
+
+<div id="site-nav"></div>
 
 <!-- Hero Section -->
 <section class="relative h-screen flex items-center pt-32 overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <img src="assets/img/hero.png" alt="Nairobi Skyline" class="w-full h-full object-cover">
+        <img src="/assets/img/hero.png" alt="Nairobi Skyline" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-transparent"></div>
     </div>
 
@@ -20,10 +37,10 @@
                 Exceptional property solutions delivered with professionalism, discretion, and integrity. We guide you through acquisition, sales, letting, and management.
             </p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="properties.php" class="bg-accent text-primary px-8 py-4 rounded-xl font-bold text-center hover:scale-105 transition-transform duration-300 shadow-lg shadow-accent/20">
+                <a href="/properties" class="bg-accent text-primary px-8 py-4 rounded-xl font-bold text-center hover:scale-105 transition-transform duration-300 shadow-lg shadow-accent/20">
                     View Properties
                 </a>
-                <a href="contact.php" class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-center hover:bg-white/20 transition-all duration-300">
+                <a href="/contact" class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-center hover:bg-white/20 transition-all duration-300">
                     Consult an Expert
                 </a>
             </div>
@@ -52,7 +69,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="relative">
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
-                <img src="assets/img/about-avihtech-1.jpg" alt="Professional Real Estate" class="rounded-3xl shadow-2xl relative z-10 w-full h-[500px] object-cover">
+                <img src="/assets/img/about-avihtech-1.jpg" alt="Professional Real Estate" class="rounded-3xl shadow-2xl relative z-10 w-full h-[500px] object-cover">
                 <div class="absolute -bottom-6 -right-6 bg-primary p-8 rounded-2xl shadow-xl z-20 hidden md:block">
                     <p class="text-accent text-3xl font-bold mb-1">6+</p>
                     <p class="text-white text-sm font-medium">Years of Local Expertise</p>
@@ -89,7 +106,7 @@
                     </div>
                 </div>
 
-                <a href="about.php" class="inline-flex items-center text-primary font-bold hover:text-accent transition-colors">
+                <a href="/about" class="inline-flex items-center text-primary font-bold hover:text-accent transition-colors">
                     Learn More About Us <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
@@ -116,7 +133,7 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-6">
                     Expert assistance in buying and selling residential and commercial properties with strategic market positioning.
                 </p>
-                <a href="contact.php" class="text-primary font-bold text-sm flex items-center">
+                <a href="/contact" class="text-primary font-bold text-sm flex items-center">
                     Get Assistance <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
                 </a>
             </div>
@@ -130,7 +147,7 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-6">
                     Connecting quality tenants with well-maintained properties through a seamless and transparent process.
                 </p>
-                <a href="contact.php" class="text-primary font-bold text-sm flex items-center">
+                <a href="/contact" class="text-primary font-bold text-sm flex items-center">
                     Rent / List Property <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
                 </a>
             </div>
@@ -144,7 +161,7 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-6">
                     End-to-end management services including tenant relations, rent administration, and asset protection.
                 </p>
-                <a href="contact.php" class="text-primary font-bold text-sm flex items-center">
+                <a href="/contact" class="text-primary font-bold text-sm flex items-center">
                     Explore Solutions <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
                 </a>
             </div>
@@ -160,7 +177,7 @@
                 <span class="text-accent font-bold tracking-widest uppercase text-sm">Portfolio</span>
                 <h2 class="text-4xl font-display font-bold text-primary mt-4">Featured Listings</h2>
             </div>
-            <a href="properties.php" class="mt-4 md:mt-0 px-6 py-3 border-2 border-primary rounded-xl font-bold hover:bg-primary hover:text-white transition-all">
+            <a href="/properties" class="mt-4 md:mt-0 px-6 py-3 border-2 border-primary rounded-xl font-bold hover:bg-primary hover:text-white transition-all">
                 Browse All Properties
             </a>
         </div>
@@ -185,10 +202,10 @@
                 Whether you're looking to buy, sell, or rent, our team of experts is here to provide value-driven solutions.
             </p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="contact.php" class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-center hover:bg-slate-100 transition-all">
+                <a href="/contact" class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-center hover:bg-slate-100 transition-all">
                     Contact Us Today
                 </a>
-                <a href="properties.php" class="bg-transparent border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-center hover:border-white transition-all">
+                <a href="/properties" class="bg-transparent border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-center hover:border-white transition-all">
                     Explore Listings
                 </a>
             </div>
@@ -196,100 +213,9 @@
     </div>
 </section>
 
-<script>
-    $(document).ready(function() {
-        // Fetch top 2 Featured Properties (Category 3)
-        const PROPERTY_API_URL = '<?php echo WP_API_URL; ?>/posts?categories=3&per_page=2&_embed';
-        const WP_API_KEY = '<?php echo WP_API_KEY; ?>';
+<div id="site-footer"></div>
 
-        $.ajax({
-            url: PROPERTY_API_URL,
-            method: 'GET',
-            beforeSend: function(xhr) {
-                if (WP_API_KEY) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + WP_API_KEY);
-                }
-            },
-            success: function(properties) {
-                const $container = $('#featured-properties-list');
-                $container.empty();
-
-                if (properties.length === 0) {
-                    $container.append('<p class="text-slate-500 text-center col-span-full py-12">No featured properties available at the moment.</p>');
-                    return;
-                }
-
-                properties.forEach(prop => {
-                    const title = decodeEntities(prop.title.rendered);
-                    const img = (prop._embedded && prop._embedded['wp:featuredmedia']) ? prop._embedded['wp:featuredmedia'][0].source_url : 'assets/img/hero.png';
-                    const af = prop.acf || {};
-                    const rawPrice = af.price || 'Request Quote';
-                    let price = rawPrice;
-                    if (rawPrice !== 'Request Quote') {
-                        const numericPrice = rawPrice.toString().replace(/[^\d.]/g, '');
-                        if (numericPrice) {
-                            price = 'KES ' + parseFloat(numericPrice).toLocaleString('en-US');
-                        }
-                    }
-                    const priceFrom = af.price_from ? `<span class="text-[10px] font-normal text-white/60 mr-1 whitespace-nowrap">${af.price_from}</span>` : '';
-                    const location = (prop.acf && prop.acf.location) ? prop.acf.location : 'Nairobi, Kenya';
-                    const status = (af.status || 'FEATURED').toUpperCase();
-                    const statusClass = status === 'SALE' ? 'bg-primary' : 'bg-accent text-primary';
-
-                    // Extract Tags
-                    let tagsHtml = '';
-                    if (prop._embedded && prop._embedded['wp:term']) {
-                        const terms = prop._embedded['wp:term'];
-                        // Usually terms[0] is categories, terms[1] is tags
-                        const tags = terms[1] || [];
-                        tagsHtml = tags.map(tag => `
-                            <span class="px-2 py-0.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-md text-[10px] uppercase tracking-wider font-bold">
-                                ${tag.name}
-                            </span>
-                        `).join('');
-                    }
-
-                    const beds = af.beds ? `<span class="flex items-center text-sm"><i class="fa-solid fa-bed mr-2 text-accent"></i> ${af.beds} Beds</span>` : '';
-                    const baths = af.baths ? `<span class="flex items-center text-sm"><i class="fa-solid fa-bath mr-2 text-accent"></i> ${af.baths} Baths</span>` : '';
-
-                    const card = `
-                        <a href="single-property.php?id=${prop.id}" class="group block">
-                            <div class="relative h-[400px] overflow-hidden rounded-3xl transition-transform duration-500 hover:shadow-2xl">
-                                <img src="${img}" alt="${title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                
-                                <div class="absolute top-4 left-4">
-                                    <div class="${statusClass} text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg">${status}</div>
-                                </div>
-
-                                <div class="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-primary/95 to-transparent text-white">
-                                    <h3 class="text-2xl font-bold mb-2 group-hover:text-accent transition-colors">${title}</h3>
-                                    <p class="text-white/80 text-sm flex items-center mb-3">
-                                        <i class="fa-solid fa-location-dot mr-2 text-accent"></i> ${location}
-                                    </p>
-                                    
-                                    <div class="flex items-center space-x-6">
-                                    ${tagsHtml}
-                                        ${beds}
-                                        ${baths}
-                                        <span class="flex items-baseline text-sm font-bold text-accent ml-auto">${priceFrom}${price}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    `;
-                    $container.append(card);
-                });
-            },
-            error: function() {
-                $('#featured-properties-list').html(`
-                    <div class="col-span-full text-center py-12 bg-white/5 rounded-3xl border border-white/10">
-                        <div class="text-4xl text-white/20 mb-4"><i class="fa-solid fa-circle-exclamation"></i></div>
-                        <p class="text-white/60">Featured properties are currently unavailable. Please check back later.</p>
-                    </div>
-                `);
-            }
-        });
-    });
-</script>
-
-<?php include('footer.php'); ?>
+<script src="/js/layout.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>

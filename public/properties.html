@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Properties | AVIHTECH AGENCIES</title>
+    <meta name="description" content="AVIHTECH AGENCIES - Professional real estate solutions in Kenya. Property sales, letting, management, and investment advisory.">
+    <link rel="icon" type="image/png" href="/assets/img/avitech-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/site.css">
+    <script src="/js/common.js"></script>
+</head>
+<body class="font-sans text-slate-900 bg-slate-50">
+
+<div id="site-nav"></div>
+
+<!-- Page Header -->
+<section class="pt-44 pb-20 bg-slate-100 text-primary relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="text-accent font-bold tracking-widest uppercase text-sm">Portfolio</span>
+        <h1 class="text-4xl md:text-6xl font-display font-bold mt-4">Featured Properties</h1>
+        <p class="text-slate-600 mt-6 max-w-2xl mx-auto">
+            Discover a wide range of residential and commercial properties available for rent, lease, or sale.
+        </p>
+    </div>
+</section>
+
+<!-- Filter & Search Section -->
+<section class="py-12 bg-white border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <form id="filter-form" class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input type="text" id="property-search" placeholder="Search properties..." class="w-full pl-12 pr-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-accent outline-none text-sm">
+            </div>
+
+            <select id="property-type" class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-accent outline-none text-sm appearance-none cursor-pointer">
+                <option value="">All Types</option>
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="land">Land/Plots</option>
+            </select>
+
+            <select id="property-status" class="w-full px-4 py-3 bg-slate-50 border-none rounded-xl focus:ring-2 focus:ring-accent outline-none text-sm appearance-none cursor-pointer">
+                <option value="">All Tags</option>
+                <option value="sale">One Acre</option>
+                <option value="rent">One Bedroom</option>
+            </select>
+
+            <button type="submit" class="bg-primary text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition-colors">
+                Apply Filters
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- Property Results Grid -->
+<section class="py-24 bg-white min-h-[600px]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="property-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Skeletons will be injected here -->
+        </div>
+
+        <!-- No Results -->
+        <div id="no-results" class="hidden text-center py-20">
+            <div class="text-6xl text-slate-200 mb-6"><i class="fa-solid fa-house-circle-exclamation"></i></div>
+            <h3 class="text-2xl font-bold text-primary mb-2">No properties found</h3>
+            <p class="text-slate-500">Try adjusting your filters or search criteria.</p>
+        </div>
+    </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="/js/layout.js"></script>
+<script src="/js/properties.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property | AVIHTECH AGENCIES</title>
+    <meta name="description" content="AVIHTECH AGENCIES - Professional real estate solutions in Kenya. Property sales, letting, management, and investment advisory.">
+    <link rel="icon" type="image/png" href="/assets/img/avitech-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/site.css">
+    <script src="/js/common.js"></script>
+</head>
+<body class="font-sans text-slate-900 bg-slate-50">
+
+<div id="site-nav"></div>
+
+<!-- Page Header / Property Banner -->
+<section class="pt-44 pb-20 bg-slate-100 text-primary relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div class="flex-1">
+                <span id="property-status" class="inline-block bg-accent text-primary text-xs font-bold px-3 py-1.5 rounded-lg mb-4 shadow-sm uppercase">Loading...</span>
+                <h1 id="property-title" class="text-4xl md:text-5xl font-display font-bold mt-2 animate-pulse bg-slate-200 h-12 w-3/4 rounded-lg"></h1>
+                <p id="property-location" class="text-slate-500 mt-4 flex items-center text-lg">
+                    <i class="fa-solid fa-location-dot mr-2 text-accent"></i> <span>Identifying location...</span>
+                </p>
+            </div>
+            <div class="text-left md:text-right">
+                <p class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-2">Price Guide</p>
+                <h2 id="property-price" class="text-3xl md:text-4xl font-bold text-primary">---</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Property Details Section -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+            <!-- Left Column: Image and Description -->
+            <div class="lg:col-span-2 space-y-12">
+                <!-- Main Image -->
+                <div id="property-image-container" class="rounded-3xl overflow-hidden shadow-2xl opacity-0 transition-opacity duration-500">
+                    <img id="property-image" src="" alt="" class="w-full h-auto object-cover max-h-[600px]">
+                </div>
+
+                <!-- Photo gallery (filled in when there is more than one photo) -->
+                <div id="property-gallery" class="hidden"></div>
+
+                <!-- Features Grid -->
+                <!-- Property Tags / Features -->
+                <div id="property-tags" class="flex flex-wrap gap-3 py-8 border-y border-slate-100 opacity-0 transition-opacity duration-500">
+                    <!-- Dynamic tags will be injected here via JavaScript -->
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-6">Property Description</h3>
+                    <div id="property-description" class="prose prose-lg max-w-none text-slate-600 leading-relaxed">
+                        <!-- Shimmer -->
+                        <div class="space-y-4">
+                            <div class="h-4 bg-slate-100 rounded w-full animate-pulse"></div>
+                            <div class="h-4 bg-slate-100 rounded w-5/6 animate-pulse"></div>
+                            <div class="h-4 bg-slate-100 rounded w-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Sidebar / Contact Form -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-32 space-y-8">
+                    <!-- Contact Box -->
+                    <div class="bg-primary p-8 rounded-3xl text-white shadow-2xl">
+                        <h3 class="text-xl font-bold mb-6 italic">Quick WhatsApp Inquiry</h3>
+                        <form id="whatsapp-inquiry-form" class="space-y-4">
+                            <input type="text" id="inquiry-name" placeholder="Your Name" required class="w-full bg-slate-800/50 border-none rounded-xl px-4 py-3 placeholder:text-slate-500 focus:ring-2 focus:ring-accent text-white">
+                            <input type="email" id="inquiry-email" placeholder="Your Email" required class="w-full bg-slate-800/50 border-none rounded-xl px-4 py-3 placeholder:text-slate-500 focus:ring-2 focus:ring-accent text-white">
+                            <textarea id="inquiry-message" placeholder="I'm interested in this property..." rows="4" required class="w-full bg-slate-800/50 border-none rounded-xl px-4 py-3 placeholder:text-slate-500 focus:ring-2 focus:ring-accent text-white"></textarea>
+                            <button type="submit" class="w-full bg-accent text-primary font-bold py-4 rounded-xl hover:bg-white transition-all flex items-center justify-center space-x-3 group">
+                                <i class="fa-brands fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
+                                <span>Send WhatsApp Inquiry</span>
+                            </button>
+                        </form>
+                        <p class="text-[10px] text-white/40 text-center mt-4">Safe & secure communication via WhatsApp</p>
+                    </div>
+
+                    <!-- Helpful Links -->
+                    <div class="bg-slate-50 p-8 rounded-3xl">
+                        <h3 class="text-xl font-bold text-primary mb-6">Important Information</h3>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Verification status: Confirmed</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Documented for transfer</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent mr-3"></i> Viewing available daily</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="/js/layout.js"></script>
+<script src="/js/property.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-link { transition: all 0.3s ease; }
+.nav-link:hover { color: #EAB308; }
+
+.hero-gradient { background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.4)); }
+
+/* Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #EAB308 !important;
+    background: white;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.swiper-button-next:after,
+.swiper-button-prev:after { font-size: 1.2rem !important; font-weight: bold; }
+.swiper-pagination-bullet-active { background: #EAB308 !important; }
+.lightbox-swiper { overflow: hidden !important; }
+
+/* Skeleton screens */
+.skeleton {
+    background: #f1f5f9;
+    background: linear-gradient(110deg, #f1f5f9 8%, #f8fafc 18%, #f1f5f9 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+}
+@keyframes shimmer { to { background-position-x: -200%; } }
+
+/* Rich text written in the dashboard (blog posts) */
+.rich-text h2 { font-size: 1.75rem; font-weight: 700; color: #0F172A; margin: 2rem 0 1rem; line-height: 1.25; }
+.rich-text h3 { font-size: 1.35rem; font-weight: 700; color: #0F172A; margin: 1.5rem 0 0.75rem; }
+.rich-text p { margin: 1rem 0; }
+.rich-text ul { list-style: disc; padding-left: 1.5rem; margin: 1rem 0; }
+.rich-text ol { list-style: decimal; padding-left: 1.5rem; margin: 1rem 0; }
+.rich-text a { color: #b45309; text-decoration: underline; }
+.rich-text blockquote { border-left: 4px solid #EAB308; padding-left: 1rem; font-style: italic; color: #475569; margin: 1.5rem 0; }
+.rich-text img { border-radius: 1.5rem; margin: 2rem auto; max-width: 100%; height: auto; }

@@ -1,31 +1,27 @@
-name: 🚀 Deploy via FTP
+name: Deploy to Cloudflare
 
 on:
   push:
     branches:
-      - main   # or 'master', depending on your repo
+      - main
 
 jobs:
   deploy:
-    name: Upload files to cPanel via FTP
+    name: Migrate database and deploy Worker
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 📦 Deploy to FTP server
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp   # 'ftp' or 'ftps' (secure)
-          port: 21         # usually 21 for FTP, 22 for SFTP
-          local-dir: ./ # adjust to your build folder or project root
-          server-dir: / # adjust to your target folder
-          exclude: |
-            **/.git*
-            **/.github*
-            **/node_modules/*
-            **/vendor/*
+          node-version: 22
+      - run: npm ci
+      - name: Apply D1 migrations
+        run: npx wrangler d1 migrations apply avihtech-db --remote
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Deploy
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
