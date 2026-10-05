@@ -33,7 +33,8 @@ const publicRoutes = [
 ];
 
 const adminRoutes = [
-    ['GET /api/admin/properties', (c) => admin.adminListProperties(c.env)],
+    ['GET /api/admin/properties', (c) => admin.adminListProperties(c.request, c.env)],
+    ['GET /api/admin/tags', (c) => admin.adminListTags(c.env)],
     ['POST /api/admin/properties', (c) => admin.adminCreateProperty(c.request, c.env)],
     ['GET /api/admin/properties/:id', (c) => admin.adminGetProperty(c.env, numericId(c.params.id))],
     ['PUT /api/admin/properties/:id', (c) => admin.adminUpdateProperty(c.request, c.env, numericId(c.params.id))],

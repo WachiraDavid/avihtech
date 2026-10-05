@@ -163,29 +163,84 @@
             <a href="${href}" class="${BTN_PRIMARY}"><i class="fa-solid fa-plus"></i> ${cta}</a>
         </div>`;
 
+    // Remembered while you edit a property and come back to the list.
+    const listState = { q: '', page: 1 };
+
+    const pageButtons = (page, pages) => {
+        const shown = [...new Set([1, pages, page - 1, page, page + 1].filter((n) => n >= 1 && n <= pages))].sort((a, b) => a - b);
+        return shown.map((n, i) => `${i && n - shown[i - 1] > 1 ? '<span class="px-1 text-slate-400">…</span>' : ''}
+            <button type="button" class="page-btn min-w-[2.5rem] h-10 px-3 rounded-lg font-bold text-sm ${n === page ? 'bg-primary text-white' : 'text-slate-600 hover:bg-slate-100'}" data-page="${n}" ${n === page ? 'aria-current="page"' : ''}>${n}</button>`).join('');
+    };
+
+    const propertyRow = (p) => `
+        <div class="${CARD} !p-4 flex flex-wrap sm:flex-nowrap items-center gap-4">
+            <a href="#/properties/${p.id}" class="w-24 h-20 rounded-xl overflow-hidden bg-slate-100 shrink-0">${thumb(p.cover)}</a>
+            <a href="#/properties/${p.id}" class="min-w-0 flex-1">
+                <p class="font-bold text-primary truncate">${p.featured ? '<i class="fa-solid fa-star text-accent mr-1" title="Featured on homepage"></i>' : ''}${esc(p.title)}</p>
+                <p class="text-sm text-slate-500 truncate">${esc(p.location || 'No location')} · ${esc(AV.formatPrice(p.price, p.listing_type))}</p>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mt-1">${esc(AV.statusLabel(p))} · ${esc(p.property_type)}</p>
+            </a>
+            <div class="flex items-center gap-4 ml-auto">
+                ${switchRow('properties', p.id, p.published)}
+                <a href="#/properties/${p.id}" class="${BTN_GHOST} !px-4 !py-2 text-sm">Edit</a>
+                <button class="delete text-slate-400 hover:text-red-600 p-2" data-id="${p.id}" data-title="${esc(p.title)}" title="Delete"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>`;
+
     async function propertiesList() {
         loading();
-        const { properties } = await api('/api/admin/properties');
         shell('properties', `
             <div class="flex items-center justify-between gap-4 mb-6">
                 <h1 class="text-3xl font-display font-bold text-primary">Properties</h1>
                 <a href="#/properties/new" class="${BTN_PRIMARY}"><i class="fa-solid fa-plus"></i> Add property</a>
             </div>
-            ${properties.length ? `<div class="space-y-3">${properties.map((p) => `
-            <div class="${CARD} !p-4 flex flex-wrap sm:flex-nowrap items-center gap-4">
-                <a href="#/properties/${p.id}" class="w-24 h-20 rounded-xl overflow-hidden bg-slate-100 shrink-0">${thumb(p.cover)}</a>
-                <a href="#/properties/${p.id}" class="min-w-0 flex-1">
-                    <p class="font-bold text-primary truncate">${p.featured ? '<i class="fa-solid fa-star text-accent mr-1" title="Featured on homepage"></i>' : ''}${esc(p.title)}</p>
-                    <p class="text-sm text-slate-500 truncate">${esc(p.location || 'No location')} · ${esc(AV.formatPrice(p.price, p.listing_type))}</p>
-                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mt-1">${esc(AV.statusLabel(p))} · ${esc(p.property_type)}</p>
-                </a>
-                <div class="flex items-center gap-4 ml-auto">
-                    ${switchRow('properties', p.id, p.published)}
-                    <a href="#/properties/${p.id}" class="${BTN_GHOST} !px-4 !py-2 text-sm">Edit</a>
-                    <button class="delete text-slate-400 hover:text-red-600 p-2" data-id="${p.id}" data-title="${esc(p.title)}" title="Delete"><i class="fa-solid fa-trash"></i></button>
-                </div>
-            </div>`).join('')}</div>` : emptyState('fa-house-circle-exclamation', 'No properties yet. Add your first listing — it only takes a minute.', '#/properties/new', 'Add property')}`);
-        wireList('properties', propertiesList);
+            <div class="relative mb-4">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input id="search" type="search" placeholder="Search by name, location or highlight…" class="${INPUT} !pl-11" value="${esc(listState.q)}" autocomplete="off">
+            </div>
+            <p id="summary" class="text-sm text-slate-500 mb-4 h-5"></p>
+            <div id="results" class="space-y-3"></div>
+            <nav id="pager" class="mt-8 flex flex-wrap items-center justify-center gap-1" aria-label="Pagination"></nav>`);
+
+        let timer;
+        let latest = 0;
+        async function load() {
+            const mine = ++latest;
+            const params = new URLSearchParams({ page: listState.page, per_page: 10 });
+            if (listState.q.trim()) params.set('q', listState.q.trim());
+            let data;
+            try { data = await api('/api/admin/properties?' + params); }
+            catch (err) { if (mine === latest) toast(err.message, 'error'); return; }
+            if (mine !== latest) return; // a newer search is already running
+
+            listState.page = data.page;
+            const { properties, total, page, pages } = data;
+            const first = (page - 1) * data.per_page;
+            $('#summary').textContent = total
+                ? `Showing ${first + 1}–${first + properties.length} of ${total} ${listState.q.trim() ? 'matching ' : ''}${total === 1 ? 'property' : 'properties'}`
+                : '';
+            $('#results').innerHTML = properties.length ? properties.map(propertyRow).join('')
+                : listState.q.trim()
+                    ? `<div class="${CARD} text-center py-14"><div class="text-4xl text-slate-200 mb-3"><i class="fa-solid fa-magnifying-glass"></i></div><p class="text-slate-500">No properties match “${esc(listState.q.trim())}”.</p></div>`
+                    : emptyState('fa-house-circle-exclamation', 'No properties yet. Add your first listing — it only takes a minute.', '#/properties/new', 'Add property');
+
+            $('#pager').innerHTML = pages > 1 ? `
+                <button type="button" class="page-btn h-10 px-4 rounded-lg font-bold text-sm text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent" data-page="${page - 1}" ${page === 1 ? 'disabled' : ''}><i class="fa-solid fa-chevron-left mr-1 text-xs"></i> Prev</button>
+                ${pageButtons(page, pages)}
+                <button type="button" class="page-btn h-10 px-4 rounded-lg font-bold text-sm text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent" data-page="${page + 1}" ${page === pages ? 'disabled' : ''}>Next <i class="fa-solid fa-chevron-right ml-1 text-xs"></i></button>` : '';
+            $$('.page-btn').forEach((b) => b.addEventListener('click', () => {
+                listState.page = Number(b.dataset.page);
+                load();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }));
+            wireList('properties', load);
+        }
+
+        $('#search').addEventListener('input', (e) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { listState.q = e.target.value; listState.page = 1; load(); }, 300);
+        });
+        load();
     }
 
     async function postsList() {
@@ -219,11 +274,11 @@
 
     async function propertyForm(id) {
         loading();
-        const [{ properties: all }, existing] = await Promise.all([
-            api('/api/admin/properties'),
+        const [{ tags: usedTags }, existing] = await Promise.all([
+            api('/api/admin/tags'),
             id ? api(`/api/admin/properties/${id}`) : null,
         ]);
-        const known = [...new Set([...SUGGESTED_TAGS, ...all.flatMap((p) => p.tags)])];
+        const known = [...new Set([...SUGGESTED_TAGS, ...usedTags])];
         const s = existing ? existing.property : {
             title: '', description: '', location: '', price: null, listing_type: 'sale', property_type: 'residential',
             beds: null, baths: null, size: '', tags: [], featured: false, published: true, images: [],

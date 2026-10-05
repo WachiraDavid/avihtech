@@ -73,9 +73,32 @@ function parseProperty(body) {
 const imageInserts = (db, propertyId, urls) =>
     urls.map((url, i) => db.prepare('INSERT INTO property_images (property_id, url, position) VALUES (?, ?, ?)').bind(propertyId, url, i));
 
-export async function adminListProperties(env) {
-    const { results } = await env.DB.prepare(`${PROPERTY_SELECT} ORDER BY p.created_at DESC, p.id DESC`).all();
-    return json({ properties: results.map(propertyOut) });
+export async function adminListProperties(request, env) {
+    const q = new URL(request.url).searchParams;
+    const perPage = Math.min(Math.max(parseInt(q.get('per_page')) || 10, 1), 50);
+    const search = (q.get('q') || '').trim();
+
+    let where = '';
+    const args = [];
+    if (search) {
+        where = "WHERE (p.title LIKE ? ESCAPE '\\' OR p.location LIKE ? ESCAPE '\\' OR p.tags LIKE ? ESCAPE '\\')";
+        const like = `%${search.replace(/[\\%_]/g, '\\$&')}%`;
+        args.push(like, like, like);
+    }
+
+    const { total } = await env.DB.prepare(`SELECT COUNT(*) AS total FROM properties p ${where}`).bind(...args).first();
+    const pages = Math.max(1, Math.ceil(total / perPage));
+    const page = Math.min(Math.max(parseInt(q.get('page')) || 1, 1), pages);
+
+    const { results } = await env.DB.prepare(`${PROPERTY_SELECT} ${where} ORDER BY p.created_at DESC, p.id DESC LIMIT ? OFFSET ?`)
+        .bind(...args, perPage, (page - 1) * perPage)
+        .all();
+    return json({ properties: results.map(propertyOut), total, page, pages, per_page: perPage });
+}
+
+export async function adminListTags(env) {
+    const { results } = await env.DB.prepare('SELECT DISTINCT j.value AS tag FROM properties p, json_each(p.tags) j ORDER BY j.value COLLATE NOCASE').all();
+    return json({ tags: results.map((r) => r.tag) });
 }
 
 export async function adminGetProperty(env, id) {
